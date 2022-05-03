@@ -1,3 +1,4 @@
+import { HotelRouter } from "controllers";
 import { config as dotenv } from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -16,6 +17,8 @@ mongoose.connect(process.env.MONGO_URL);
 
 app.use(morgan("common"));
 app.use(express.json());
+
+app.use("/hotels", HotelRouter);
 
 app.listen(PORT, () => {
   console.log(`The server is now listening on http://localhost:${PORT}`);
